@@ -1,0 +1,30 @@
+images:
+  - name: ubuntu-noble-desktop
+    singleapp: false
+    base: core-ubuntu-noble
+    dockerfile: dockerfile-kasm-ubuntu-noble-desktop
+
+  - name: debian-bookworm-desktop
+    singleapp: false
+    base: core-debian-bookworm
+    dockerfile: dockerfile-kasm-debian-bookworm-desktop
+
+  - name: rockylinux-9-desktop
+    singleapp: false
+    base: core-rockylinux-9
+    dockerfile: dockerfile-kasm-rockylinux-9-desktop
+
+  - name: almalinux-9-desktop
+    singleapp: false
+    base: core-almalinux-9
+    dockerfile: dockerfile-kasm-almalinux-9-desktop
+
+  - name: fedora-40-desktop
+    singleapp: false
+    base: core-fedora-40
+    dockerfile: dockerfile-kasm-fedora-40-desktop
+
+  - name: alpine-320-desktop
+    singleapp: false
+    base: core-alpine-320
+    dockerfile: dockerfile-kasm-alpine-320-desktop
