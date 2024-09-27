@@ -1,0 +1,5 @@
+images:
+  - name: debian-bookworm-desktop
+    singleapp: false
+    base: core-debian-bookworm
+    dockerfile: dockerfile-kasm-debian-bookworm-desktop
