@@ -1,5 +1,6 @@
 import yaml
 import subprocess
+import sys
 
 def run_build_script(image):
     """
@@ -13,26 +14,28 @@ def run_build_script(image):
 
     # 构建命令
     command = [
-        "bash", "build.sh",
+        "bash", "build-scripts/build.sh",
         name, base, dockerfile
     ]
 
     # 打印命令以供调试
     print("Running command:", " ".join(command))
 
-    # 执行命令
-    result = subprocess.run(command, capture_output=True, text=True)
-
-    # 打印输出
-    print("stdout:", result.stdout)
-    print("stderr:", result.stderr)
+    # 执行命令并实时打印输出build-scripts/
+    with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True) as process:
+        while True:
+            output = process.stdout.readline()
+            if output == '' and process.poll() is not None:
+                break
+            if output:
+                print(output.strip(), flush=True)
 
     # 检查命令是否成功
-    if result.returncode != 0:
-        raise Exception(f"Command failed with return code {result.returncode}")
+    if process.returncode != 0:
+        raise Exception(f"Command failed with return code {process.returncode}")
 
 # 从 YAML 文件中加载数据
-with open('images.yaml', 'r') as file:
+with open('build-scripts/images.yaml', 'r') as file:
     data = yaml.safe_load(file)
 
 # 获取镜像信息列表
@@ -43,4 +46,4 @@ for image in images:
     try:
         run_build_script(image)
     except Exception as e:
-        print(f"Failed to build image {image['name1']} {image['name2']}: {e}")
+        print(f"Failed to build image {image['name']} {image['base']}: {e}")
