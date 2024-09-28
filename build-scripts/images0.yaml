@@ -3,3 +3,8 @@ images:
     singleapp: false
     base: core-debian-bookworm
     dockerfile: dockerfile-kasm-debian-bookworm-desktop
+
+  - name: fedora-40-desktop
+    singleapp: false
+    base: core-fedora-40
+    dockerfile: dockerfile-kasm-fedora-40-desktop
