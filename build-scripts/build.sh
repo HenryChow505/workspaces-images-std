@@ -13,6 +13,6 @@ DOCKERFILE=$3
 ## Build/Push image to cache endpoint by pipeline ID ##
   # --build-arg BASE_TAG="${BASE_TAG}" \
 docker build \
-  -t KasmCustom/${NAME}:dev \
+  -t kasmcustom/${NAME}:dev \
   --build-arg BASE_IMAGE="${BASE}" \
   -f ${DOCKERFILE} .

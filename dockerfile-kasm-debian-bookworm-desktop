@@ -1,6 +1,6 @@
 ARG BASE_TAG="develop"
 ARG BASE_IMAGE="core-debian-bookworm"
-FROM KasmCustom/$BASE_IMAGE:$BASE_TAG
+FROM kasmcustom/$BASE_IMAGE:$BASE_TAG
 
 USER root
 
